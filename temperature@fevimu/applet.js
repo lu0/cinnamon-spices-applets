@@ -371,10 +371,10 @@ CPUTemperatureApplet.prototype = {
     let unit = "";
     let separator = "";
     if (this.state.showUnit) {
-      unit = "°";
+      unit = '\u030A' + '\u0063';
       separator = (this.isHorizontal || !line_feed) ? " " : (this.state.showUnitLetter) ? "\n" : "";
     } else if (!line_feed) {
-      separator = " ";
+      separator = "";
       unit = "°";
     }
 

@@ -921,7 +921,7 @@ class UI {
         return true;
     }
     unitToUnicode(unit) {
-        return unit == "fahrenheit" ? '\u2109' : '\u2103';
+        return unit == "fahrenheit" ? '\uA730' : '\u030A' + '\u0063';
     }
     destroyCurrentWeather() {
         if (this._currentWeather.get_child() != null)
