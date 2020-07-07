@@ -84,6 +84,7 @@ class CategoryListButton extends PopupBaseMenuItem {
                                  style_class: 'menu-category-button-label'
                               });
         this.addActor(this.label);
+        this.actor.set_style('padding-right: 100px;');
         this.label.realize();
 
         //?undo
@@ -242,11 +243,11 @@ class ApplicationContextMenuItem extends PopupBaseMenuItem {
         this.action = action;
         this.label = new Label({
             text: label,
-            style: 'font-size: 13px;'
+            style: 'font-size: 0.9em;'
         });
         if (iconName !== null) {
             this.icon = new Icon({ icon_name: iconName,
-                                   icon_size: 12,
+                                   icon_size: 14,
                                    icon_type: IconType.SYMBOLIC });
             if (this.icon) {
                 this.addActor(this.icon);
@@ -377,8 +378,12 @@ class AppListGridButton extends PopupBaseMenuItem {
 
         this.actor.set_style_class_name('menu-application-button');
         if (!this.state.isListView) {
-            this.actor.set_style('padding-left: 0px; padding-right: 0px;');
+            this.actor.set_style('  font-size: 0.9em; \
+                                    padding-left: 5px; padding-right: 5px; \
+                                    padding-top: 27px; padding-bottom: 27px; \
+                                    height: 100px;');
         }
+
         this.actor.x_align = this.state.isListView ? Align.START : Align.MIDDLE;
         this.actor.y_align = Align.MIDDLE;
 
@@ -488,7 +493,7 @@ class AppListGridButton extends PopupBaseMenuItem {
         this.label = new Label({
             text: this.buttonState.app.name,
             style_class: 'menu-application-button-label',
-            style: 'padding-right: 2px; padding-left: 2px'
+            style: 'padding-right: 2px; padding-left: 2px; padding-top: 15px;'
         });
         this.dot = new Widget({
             style: this.state.isListView ?
@@ -521,12 +526,6 @@ class AppListGridButton extends PopupBaseMenuItem {
             x_align: this.state.isListView ? Align.START : Align.MIDDLE,
             y_align: Align.MIDDLE
         });
-        this.buttonBox.add(this.dot, {
-            x_fill: false,
-            y_fill: false,
-            x_align: Align.MIDDLE,
-            y_align: Align.MIDDLE
-        });
         this.buttonBox.add(this.label, {
             x_fill: false,
             y_fill: false,
@@ -539,7 +538,7 @@ class AppListGridButton extends PopupBaseMenuItem {
             this.menu = new PopupSubMenu(this.actor);
             this.menu.actor.set_style_class_name('menu menu-context-menu menu-background starkmenu-background');
             this.menu.actor.set_style('width: 225px !important;');
-            this.menu.actor.set_opacity(245);
+            this.menu.actor.set_opacity(255);
             this.menu.isOpen = false;
             this.buttonBox.add_actor(this.menu.actor);
         } else {
@@ -671,6 +670,13 @@ class AppListGridButton extends PopupBaseMenuItem {
 
         this.entered = true;
         this.actor.set_style_class_name('menu-application-button-selected');
+        if (!this.state.isListView) {
+            this.actor.set_style('  font-size: 0.9em; \
+                                    padding-left: 5px; padding-right: 5px; \
+                                    padding-top: 27px; padding-bottom: 27px;\
+                                    height: 100px; \
+                                    ');
+        }
 
         if (this.state.settings.descriptionPlacement === PlacementTOOLTIP) {
             this.formatTooltip();
@@ -846,12 +852,6 @@ class AppListGridButton extends PopupBaseMenuItem {
                 t.menu.addMenuItem(t.contextMenuButtons[t.contextMenuButtons.length - 1]);
             };
 
-            addMenuItem(this, new ApplicationContextMenuItem(this.state, this.buttonState,
-                                                        _('Add to panel'), 'add_to_panel', 'list-add'));
-            if (USER_DESKTOP_PATH) {
-                addMenuItem(this, new ApplicationContextMenuItem(this.state, this.buttonState,
-                                                        _('Add to desktop'), 'add_to_desktop', 'computer'));
-            }
             if (this.state.trigger('isFavorite', this.buttonState.app.get_id())) {
                 addMenuItem(this, new ApplicationContextMenuItem(this.state, this.buttonState,
                                                 _('Remove favorite'), 'remove_from_favorites', 'starred'));

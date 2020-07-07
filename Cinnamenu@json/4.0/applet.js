@@ -188,7 +188,7 @@ class CinnamenuApplet extends TextIconApplet {
     getGridWidth() {
         if (!this.state) return 0;
         //size grid so that column widths are slightly wider when there are fewer columns
-        let width = (this.state.settings.appsGridColumnCount * 130 + 80) * global.ui_scale;
+        let width = (this.state.settings.appsGridColumnCount * 170) * global.ui_scale;
         //ensure column width is a integer.
         width = Math.round(width / this.state.settings.appsGridColumnCount) * this.state.settings.appsGridColumnCount;
         return width;
@@ -1848,7 +1848,7 @@ class CinnamenuApplet extends TextIconApplet {
         this.previousSearchPattern = '';
         this.searchEntry.set_primary_icon(this.searchInactiveIcon);
         this.searchBox = new St.BoxLayout({ style_class: 'menu-search-box',
-                                            style: 'padding-right: 7px; min-width: 160px;' });
+                                            style: 'padding-right: 25px; min-width: 160px;' });
         this.searchBox.add(this.searchEntry, {  expand: true, x_align: St.Align.START, y_align: St.Align.START });
         // Bottom pane holds power group and search box (packed horizontally)
         this.bottomPane = new St.BoxLayout({ /*style: 'padding-top: 12px;'*/ });
@@ -2061,7 +2061,7 @@ class PowerGroupBox {
                           icon_type: IconType.FULLCOLOR };
         iconObj.icon_name = 'system-lock-screen';
         this.items.push(new GroupButton( this.state, new Icon(iconObj), _('Lock Screen'),
-                    _('Lock the screen'), () => {
+                    _(''), () => {
                         let screensaver_settings = new Gio.Settings({
                                                     schema_id: 'org.cinnamon.desktop.screensaver' });
                         let screensaver_dialog = Gio.file_new_for_path('/usr/bin/cinnamon-screensaver-command');
@@ -2077,11 +2077,11 @@ class PowerGroupBox {
                         this.state.trigger('closeMenu'); }));
         iconObj.icon_name = 'system-log-out';
         this.items.push(new GroupButton( this.state, new Icon(iconObj), _('Logout'),
-                                        _('Leave the session'), () => { spawnCommandLine('cinnamon-session-quit');
+                                        _(''), () => { spawnCommandLine('cinnamon-session-quit');
                                                                         this.state.trigger('closeMenu'); } ));
         iconObj.icon_name = 'system-shutdown';
-        this.items.push(new GroupButton( this.state, new Icon(iconObj), _('Quit'),
-                            _('Shutdown the computer'), () => { spawnCommandLine('cinnamon-session-quit --power-off');
+        this.items.push(new GroupButton( this.state, new Icon(iconObj), _('Shutdown'),
+                            _(''), () => { spawnCommandLine('cinnamon-session-quit --power-off');
                                                                 this.state.trigger('closeMenu'); } ));
         for (let i = 0; i < this.items.length; i++) {
             if (i == this.items.length - 3 && this.items.length > 3){
