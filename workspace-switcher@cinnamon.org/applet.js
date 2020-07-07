@@ -220,8 +220,23 @@ class SimpleButton extends WorkspaceButton {
             this.actor.add_style_class_name('vertical');
         }
 
-        let label = new St.Label({ text: (index + 1).toString() });
-        label.clutter_text.set_ellipsize(Pango.EllipsizeMode.NONE);
+        // Hardcode icons instead of numbers for each workspace
+        // Use icons of (previously installed) Papirus theme: 
+        // /usr/share/icons/Papirus/symbolic
+        var icon_names = [ 
+                          'google-chrome-symbolic',            // Web browser
+                          'applications-graphics-symbolic',    // Design
+                          'my-caffeine-on-symbolic',           // Lab
+                          'folder-symbolic',                   // File Explorer
+                          'utilities-terminal-symbolic',       // Terminal
+                          'mail-unread-symbolic',              // Messaging
+                          'applications-games-symbolic',       // Gaming
+                          'emblem-music-symbolic',             // Music 
+                        ]      
+
+        let label = new St.Icon({icon_name: icon_names[index],
+                                 style_class: 'system-status-icon'});
+
         this.actor.set_child(label);
         this.update();
     }
