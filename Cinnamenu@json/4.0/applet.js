@@ -188,7 +188,7 @@ class CinnamenuApplet extends TextIconApplet {
     getGridWidth() {
         if (!this.state) return 0;
         //size grid so that column widths are slightly wider when there are fewer columns
-        let width = (this.state.settings.appsGridColumnCount * 170) * global.ui_scale;
+        let width = (this.state.settings.appsGridColumnCount * 130) * global.ui_scale;
         //ensure column width is a integer.
         width = Math.round(width / this.state.settings.appsGridColumnCount) * this.state.settings.appsGridColumnCount;
         return width;

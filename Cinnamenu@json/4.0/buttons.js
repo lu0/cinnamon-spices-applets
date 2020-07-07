@@ -84,7 +84,7 @@ class CategoryListButton extends PopupBaseMenuItem {
                                  style_class: 'menu-category-button-label'
                               });
         this.addActor(this.label);
-        this.actor.set_style('padding-right: 100px;');
+        this.actor.set_style('padding-right: 120px;');
         this.label.realize();
 
         //?undo
@@ -380,8 +380,8 @@ class AppListGridButton extends PopupBaseMenuItem {
         if (!this.state.isListView) {
             this.actor.set_style('  font-size: 0.9em; \
                                     padding-left: 5px; padding-right: 5px; \
-                                    padding-top: 27px; padding-bottom: 27px; \
-                                    height: 100px;');
+                                    padding-top: 17px; padding-bottom: 17px; \
+                                    height: 85px;');
         }
 
         this.actor.x_align = this.state.isListView ? Align.START : Align.MIDDLE;
@@ -673,8 +673,8 @@ class AppListGridButton extends PopupBaseMenuItem {
         if (!this.state.isListView) {
             this.actor.set_style('  font-size: 0.9em; \
                                     padding-left: 5px; padding-right: 5px; \
-                                    padding-top: 27px; padding-bottom: 27px;\
-                                    height: 100px; \
+                                    padding-top: 17px; padding-bottom: 17px;\
+                                    height: 85px; \
                                     ');
         }
 
