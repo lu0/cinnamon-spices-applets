@@ -220,7 +220,7 @@ class SimpleButton extends WorkspaceButton {
             this.actor.add_style_class_name('vertical');
         }
 
-        // Hardcode icons instead of numbers for each workspace
+        // Hardcoded icons instead of numbers for each workspace
         // Use icons of (previously installed) Papirus theme: 
         // /usr/share/icons/Papirus/symbolic
         var icon_names = [ 
